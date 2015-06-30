@@ -39,6 +39,7 @@ show:
             ld c, (hl)
             call spi.write
             inc hl
+            djnz {@-1}
       pop bc
       djnz {@-2}
       ld c, $FF \ ld b, 4 \ call spi.write \ djnz $-5 ; send $FF out 4 times
