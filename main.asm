@@ -22,3 +22,5 @@ loop:
       ret
 
 #include "DotStar.asm"
+
+.global
