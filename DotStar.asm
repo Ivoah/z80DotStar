@@ -1,5 +1,3 @@
-.binarymode TI8X
-
 .local
 .nestmodules
 .module dotstar
