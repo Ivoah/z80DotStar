@@ -4,6 +4,7 @@
 .module spi
 
 init:
+      di
       ld a, 3
       out (0), a
       ret
@@ -37,6 +38,7 @@ write:
 end:
       ld a, 0
       out (0), a
+      ei
       ret
 
 .endmodule

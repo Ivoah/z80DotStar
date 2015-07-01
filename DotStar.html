@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<title>List file for main.asm (6/30/2015 11:33:53 PM)</title>
+</head>
+<body>
+<style>
+h1, h2, h3, h4, p { font-family: trebuchet ms, verdana, tahoma, sans serif; text-align: center; }
+#asmout, #ascii { border-collapse: collapse; border: 1px solid black; margin-left: auto; margin-right: auto; }
+#asmout td, #asmout th, #ascii td, #ascii th { vertical-align: top; padding: 3px; margin: 0px; border-left: 1px solid #333333; border-right: 1px solid #333333; font-family: consolas, lucida console, courier new, monospace; font-size: 10pt; }
+*.r0 { background-color: #DDDDDD; }
+*.r1 { background-color: #CCCCCC; }
+#asmout td.f { background-color: #9999FF; text-align: center; border: 1px solid #333333; }
+#asmout td.p { background-color: #99FF99; text-align: center; border: 1px solid #333333; }
+#asmout td.j { background-color: #FF9999; text-align: center; border: 1px solid #333333; }
+#asmout td.l { background-color: #CCCCFF; text-align: center; border: 1px solid #333333; }
+#asmout td.c { text-align: center; }
+#asmout th, #ascii th { font-weight: bold; text-align: center; background-color: black; color: white;}
+#ascii td { text-align: center; width: 24px; } #unused { color: #999999; }
+</style>
+<h1>General Information</h1>
+<table id="asmout">
+<th>Field</th><th>Value</th>
+<tr class="r0"><td>Brass Version</td><td>1.0.5.3</td></tr>
+<tr class="r1"><td>Source File</td><td>/Users/ivo/Desktop/DotStar/main.asm</td></tr>
+<tr class="r0"><td>Total Source Files</td><td>4</td></tr>
+<tr class="r1"><td>Page Count</td><td>1</td></tr>
+</table>
+<h1>Output</h1>
+<table id="asmout">
+<tr><th>Address</th><th>Output</th><th>Source</th></tr>
+<tr><td class="f" colspan="4">/Users/ivo/Desktop/DotStar/main.asm</td></tr>
+<tr><td class="p" colspan="4">Page 0</td></tr>
+<tr class="r0"><td class="c">9D93</td><td>BB</td><td>.db $BB,$6D</td></tr>
+<tr class="r1"><td class="c">9D94</td><td>6D</td><td>.db $BB,$6D</td></tr>
+<tr><td class="l" colspan="4">start</td></tr>
+<tr class="r0"><td class="c">9D95</td><td>CD&nbsp;0D&nbsp;9E</td><td>call dotstar.init</td></tr>
+<tr class="r1"><td class="c">9D98</td><td>3E&nbsp;FF</td><td>ld a, $FF</td></tr>
+<tr class="r0"><td class="c">9D9A</td><td>D3&nbsp;01</td><td>out (1), a</td></tr>
+<tr class="r1"><td class="c">9D9C</td><td>3E&nbsp;FD</td><td>ld a, $FD</td></tr>
+<tr class="r0"><td class="c">9D9E</td><td>D3&nbsp;01</td><td>out (1), a</td></tr>
+<tr class="r1"><td class="c">9DA0</td><td>06&nbsp;00&nbsp;0E&nbsp;FF&nbsp;16&nbsp;00&nbsp;1E&nbsp;00&nbsp;<br />CD&nbsp;17&nbsp;9E</td><td>ld b, 0\ ld c,  $FF \ ld d,  $00 \ ld e,  $00 \ call dotstar.set_led</td></tr>
+<tr class="r0"><td class="c">9DAB</td><td>06&nbsp;01&nbsp;0E&nbsp;00&nbsp;16&nbsp;FF&nbsp;1E&nbsp;00&nbsp;<br />CD&nbsp;17&nbsp;9E</td><td>ld b, 1\ ld c,  $00 \ ld d,  $FF \ ld e,  $00 \ call dotstar.set_led</td></tr>
+<tr class="r1"><td class="c">9DB6</td><td>06&nbsp;02&nbsp;0E&nbsp;00&nbsp;16&nbsp;00&nbsp;1E&nbsp;FF&nbsp;<br />CD&nbsp;17&nbsp;9E</td><td>ld b, 2\ ld c,  $00 \ ld d,  $00 \ ld e,  $FF \ call dotstar.set_led</td></tr>
+<tr class="r0"><td class="c">9DC1</td><td>06&nbsp;03&nbsp;0E&nbsp;00&nbsp;16&nbsp;FF&nbsp;1E&nbsp;00&nbsp;<br />CD&nbsp;17&nbsp;9E</td><td>ld b, 3\ ld c,  $00 \ ld d,  $FF \ ld e,  $00 \ call dotstar.set_led</td></tr>
+<tr class="r1"><td class="c">9DCC</td><td>06&nbsp;04&nbsp;0E&nbsp;FF&nbsp;16&nbsp;00&nbsp;1E&nbsp;00&nbsp;<br />CD&nbsp;17&nbsp;9E</td><td>ld b, 4\ ld c,  $FF \ ld d,  $00 \ ld e,  $00 \ call dotstar.set_led</td></tr>
+<tr class="r0"><td class="c">9DD7</td><td>CD&nbsp;28&nbsp;9E</td><td>call dotstar.show</td></tr>
+<tr><td class="l" colspan="4">loop</td></tr>
+<tr class="r1"><td class="c">9DDA</td><td>DB&nbsp;01</td><td>in a, (1)</td></tr>
+<tr class="r0"><td class="c">9DDC</td><td>CB&nbsp;77</td><td>bit 6, a</td></tr>
+<tr class="r1"><td class="c">9DDE</td><td>20&nbsp;FA</td><td>jr nz, loop</td></tr>
+<tr class="r0"><td class="c">9DE0</td><td>CD&nbsp;07&nbsp;9E</td><td>call dotstar.end</td></tr>
+<tr class="r1"><td class="c">9DE3</td><td>C9</td><td>ret</td></tr>
+<tr><td class="f" colspan="4">/Users/ivo/Desktop/DotStar/spi.asm</td></tr>
+<tr><td class="l" colspan="4">dotstar.spi.init</td></tr>
+<tr class="r0"><td class="c">9DE4</td><td>F3</td><td>di</td></tr>
+<tr class="r1"><td class="c">9DE5</td><td>3E&nbsp;03</td><td>ld a, 3</td></tr>
+<tr class="r0"><td class="c">9DE7</td><td>D3&nbsp;00</td><td>out (0), a</td></tr>
+<tr class="r1"><td class="c">9DE9</td><td>C9</td><td>ret</td></tr>
+<tr><td class="l" colspan="4">dotstar.spi.write</td></tr>
+<tr class="r0"><td class="c">9DEA</td><td>C5</td><td>push bc</td></tr>
+<tr class="r1"><td class="c">9DEB</td><td>06&nbsp;08</td><td>ld b, 8</td></tr>
+<tr class="r0"><td class="c">9DED</td><td>CB&nbsp;79</td><td>bit 7, c</td></tr>
+<tr class="r1"><td class="c">9DEF</td><td>20&nbsp;06</td><td>jr nz, {@}</td></tr>
+<tr class="r0"><td class="c">9DF1</td><td>3E&nbsp;02</td><td>ld a, %00000010</td></tr>
+<tr class="r1"><td class="c">9DF3</td><td>D3&nbsp;00</td><td>out (0), a</td></tr>
+<tr class="r0"><td class="c">9DF5</td><td>18&nbsp;04</td><td>jr {@+2}</td></tr>
+<tr class="r1"><td class="c">9DF7</td><td>3E&nbsp;03</td><td>ld a, %00000011</td></tr>
+<tr class="r0"><td class="c">9DF9</td><td>D3&nbsp;00</td><td>out (0), a</td></tr>
+<tr class="r1"><td class="c">9DFB</td><td>DB&nbsp;00</td><td>in a, (0)</td></tr>
+<tr class="r0"><td class="c">9DFD</td><td>CB&nbsp;8F</td><td>res 1, a</td></tr>
+<tr class="r1"><td class="c">9DFF</td><td>D3&nbsp;00</td><td>out (0), a</td></tr>
+<tr class="r0"><td class="c">9E01</td><td>CB&nbsp;21</td><td>sla c</td></tr>
+<tr class="r1"><td class="c">9E03</td><td>10&nbsp;E8</td><td>djnz {@-3}</td></tr>
+<tr class="r0"><td class="c">9E05</td><td>C1</td><td>pop bc</td></tr>
+<tr class="r1"><td class="c">9E06</td><td>C9</td><td>ret</td></tr>
+<tr><td class="l" colspan="4">dotstar.spi.end</td></tr>
+<tr class="r0"><td class="c">9E07</td><td>3E&nbsp;00</td><td>ld a, 0</td></tr>
+<tr class="r1"><td class="c">9E09</td><td>D3&nbsp;00</td><td>out (0), a</td></tr>
+<tr class="r0"><td class="c">9E0B</td><td>FB</td><td>ei</td></tr>
+<tr class="r1"><td class="c">9E0C</td><td>C9</td><td>ret</td></tr>
+<tr><td class="f" colspan="4">/Users/ivo/Desktop/DotStar/DotStar.asm</td></tr>
+<tr><td class="l" colspan="4">dotstar.init</td></tr>
+<tr class="r0"><td class="c">9E0D</td><td>CD&nbsp;E4&nbsp;9D</td><td>call spi.init</td></tr>
+<tr class="r1"><td class="c">9E10</td><td>CD&nbsp;52&nbsp;9E</td><td>call clear</td></tr>
+<tr class="r0"><td class="c">9E13</td><td>CD&nbsp;28&nbsp;9E</td><td>call show</td></tr>
+<tr class="r1"><td class="c">9E16</td><td>C9</td><td>ret</td></tr>
+<tr><td class="l" colspan="4">dotstar.set_led</td></tr>
+<tr class="r0"><td class="c">9E17</td><td>21&nbsp;72&nbsp;98</td><td>ld hl, leds</td></tr>
+<tr class="r1"><td class="c">9E1A</td><td>D5</td><td>push de</td></tr>
+<tr class="r0"><td class="c">9E1B</td><td>16&nbsp;00&nbsp;58&nbsp;19&nbsp;19&nbsp;19</td><td>ld d,0 \ ld e,b \ add hl,de \ add hl,de \ add hl,de</td></tr>
+<tr class="r1"><td class="c">9E21</td><td>D1</td><td>pop de</td></tr>
+<tr class="r0"><td class="c">9E22</td><td>73&nbsp;23</td><td>ld (hl), e \ inc hl</td></tr>
+<tr class="r1"><td class="c">9E24</td><td>72&nbsp;23</td><td>ld (hl), d \ inc hl</td></tr>
+<tr class="r0"><td class="c">9E26</td><td>71</td><td>ld (hl), c</td></tr>
+<tr class="r1"><td class="c">9E27</td><td>C9</td><td>ret</td></tr>
+<tr><td class="l" colspan="4">dotstar.show</td></tr>
+<tr class="r0"><td class="c">9E28</td><td>21&nbsp;72&nbsp;98</td><td>ld hl, leds</td></tr>
+<tr class="r1"><td class="c">9E2B</td><td>0E&nbsp;00&nbsp;06&nbsp;04&nbsp;CD&nbsp;EA&nbsp;9D&nbsp;10&nbsp;<br />FB</td><td>ld c, $00 \ ld b, 4 \ call spi.write \ djnz $-3</td></tr>
+<tr class="r0"><td class="c">9E34</td><td>06&nbsp;05</td><td>ld b,  5</td></tr>
+<tr class="r1"><td class="c">9E36</td><td>0E&nbsp;FF</td><td>ld c, $FF</td></tr>
+<tr class="r0"><td class="c">9E38</td><td>C5</td><td>push bc</td></tr>
+<tr class="r1"><td class="c">9E39</td><td>06&nbsp;03</td><td>ld b, 3</td></tr>
+<tr class="r0"><td class="c">9E3B</td><td>CD&nbsp;EA&nbsp;9D</td><td>call spi.write</td></tr>
+<tr class="r1"><td class="c">9E3E</td><td>4E</td><td>ld c, (hl)</td></tr>
+<tr class="r0"><td class="c">9E3F</td><td>CD&nbsp;EA&nbsp;9D</td><td>call spi.write</td></tr>
+<tr class="r1"><td class="c">9E42</td><td>23</td><td>inc hl</td></tr>
+<tr class="r0"><td class="c">9E43</td><td>10&nbsp;F9</td><td>djnz {@-1}</td></tr>
+<tr class="r1"><td class="c">9E45</td><td>C1</td><td>pop bc</td></tr>
+<tr class="r0"><td class="c">9E46</td><td>10&nbsp;F0</td><td>djnz {@-2}</td></tr>
+<tr class="r1"><td class="c">9E48</td><td>0E&nbsp;FF&nbsp;06&nbsp;04&nbsp;CD&nbsp;EA&nbsp;9D&nbsp;10&nbsp;<br />FB</td><td>ld c, $FF \ ld b, 4 \ call spi.write \ djnz $-3</td></tr>
+<tr class="r0"><td class="c">9E51</td><td>C9</td><td>ret</td></tr>
+<tr><td class="l" colspan="4">dotstar.clear</td></tr>
+<tr class="r1"><td class="c">9E52</td><td>3E&nbsp;00</td><td>ld a, 0</td></tr>
+<tr class="r0"><td class="c">9E54</td><td>32&nbsp;72&nbsp;98</td><td>ld (leds), a</td></tr>
+<tr class="r1"><td class="c">9E57</td><td>21&nbsp;72&nbsp;98</td><td>ld hl, leds</td></tr>
+<tr class="r0"><td class="c">9E5A</td><td>23</td><td>inc hl</td></tr>
+<tr class="r1"><td class="c">9E5B</td><td>11&nbsp;72&nbsp;98</td><td>ld de, leds</td></tr>
+<tr class="r0"><td class="c">9E5E</td><td>13&nbsp;13</td><td>inc de \ inc de</td></tr>
+<tr class="r1"><td class="c">9E60</td><td>01&nbsp;0F&nbsp;00</td><td>ld bc, sizeof(leds)</td></tr>
+<tr class="r0"><td class="c">9E63</td><td>ED&nbsp;B0</td><td>ldir</td></tr>
+<tr class="r1"><td class="c">9E65</td><td>C9</td><td>ret</td></tr>
+</table>
+</body></html>

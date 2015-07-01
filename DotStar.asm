@@ -16,7 +16,7 @@ init:
 ;Inputs:
 ;b = led
 ;c = red, d = green, e = blue
-led:
+set_led:
       ld hl, leds
       push de
             ld d,0 \ ld e,b \ add hl,de \ add hl,de \ add hl,de
@@ -28,7 +28,7 @@ led:
 
 show:
       ld hl, leds
-      ld c, $00 \ ld b, 4 \ call spi.write \ djnz $-5 ; send $00 out 4 times
+      ld c, $00 \ ld b, 4 \ call spi.write \ djnz $-3 ; send $00 out 4 times
       ld b, NUM_LEDS
       ld c, $FF
 @:
@@ -42,7 +42,7 @@ show:
             djnz {@-1}
       pop bc
       djnz {@-2}
-      ld c, $FF \ ld b, 4 \ call spi.write \ djnz $-5 ; send $FF out 4 times
+      ld c, $FF \ ld b, 4 \ call spi.write \ djnz $-3 ; send $FF out 4 times
       ret
 
 clear:
