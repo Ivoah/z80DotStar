@@ -2,6 +2,8 @@
 .nestmodules
 .module dotstar
 
+#include "spi.asm"
+
 .varloc AppBackupScreen, 768
 .var byte[NUM_LEDS*3], leds
 
@@ -54,9 +56,6 @@ clear:
       ldir
       ret
 
-end:
-      jr spi.end
-
-#include "spi.asm"
+end .equ spi.end
 
 .endmodule
