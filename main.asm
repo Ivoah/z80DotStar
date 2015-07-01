@@ -1,13 +1,23 @@
 .binarymode TI8X
 .variablename DOTSTAR
 
-#include "ti83plus.inc"
-
 .define NUM_LEDS 5
 .define led(num, red, green, blue) ld b, num \ ld c, red \ ld d, green \ ld e, blue \ call dotstar.set_led
 
+.define CSE
+
+.ifdef CSE
+.include "ti84pcse.inc"
+.else
+.include "ti83plus.inc"
+.endif
+
 .org userMem - 2
+.ifdef CSE
+.db tExtTok, tAsm84CCmp
+.else
 .db $BB,$6D
+.endif
 
 start:
       call dotstar.init
@@ -26,9 +36,9 @@ loop:
       in a, (1) ;loop code
       bit 6, a
       jr nz, loop
-      call dotstar.end
+      call dotstar.free
       ret
 
-#include "DotStar.asm"
+.include "DotStar.asm"
 
 .global

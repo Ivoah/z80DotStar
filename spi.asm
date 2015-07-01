@@ -35,7 +35,7 @@ write:
       pop bc
       ret
 
-end:
+free:
       ld a, 0
       out (0), a
       ei

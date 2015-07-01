@@ -2,9 +2,9 @@
 .nestmodules
 .module dotstar
 
-#include "spi.asm"
+.include "spi.asm"
 
-.varloc AppBackupScreen, 768
+.varloc saveSScreen, 768
 .var byte[NUM_LEDS*3], leds
 
 init:
@@ -56,6 +56,6 @@ clear:
       ldir
       ret
 
-end .equ spi.end
+free .equ spi.free
 
 .endmodule
