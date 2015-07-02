@@ -20,24 +20,24 @@
 .endif
 
 start:
-      call dotstar.init
-      ld a, $FF
-      out (1), a
-      ld a, $FD
-      out (1), a
+    call dotstar.init
+    ld a, $FF
+    out (1), a
+    ld a, $FD
+    out (1), a
 
-      led(0, $FF, $00, $00)
-      led(1, $00, $FF, $00)
-      led(2, $00, $00, $FF)
-      led(3, $00, $FF, $00)
-      led(4, $FF, $00, $00)
-      call dotstar.show
+    led(0, $FF, $00, $00)
+    led(1, $00, $FF, $00)
+    led(2, $00, $00, $FF)
+    led(3, $00, $FF, $00)
+    led(4, $FF, $00, $00)
+    call dotstar.show
 loop:
-      in a, (1) ;loop code
-      bit 6, a
-      jr nz, loop
-      call dotstar.free
-      ret
+    in a, (1) ;loop code
+    bit 6, a
+    jr nz, loop
+    call dotstar.free
+    ret
 
 .include "DotStar.asm"
 
