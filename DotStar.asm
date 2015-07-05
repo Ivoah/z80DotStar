@@ -47,15 +47,22 @@ show:
     pop bc
     ret
 
+shift:
+    push bc \ push de
+    ld hl, leds + NUM_LEDS*3 - 1
+    ld de, leds + NUM_LEDS*3 + 2
+    ld bc, sizeof(leds)
+    lddr
+    pop de \ pop bc
+    ret
+
 clear:
     push bc \ push de
     ld a, 0
     ld (leds), a
     ld hl, leds
-    inc hl
-    ld de, leds
-    inc de \ inc de
-    ld bc, sizeof(leds)
+    ld de, leds + 1
+    ld bc, sizeof(leds) - 1
     ldir
     pop de \ pop bc
     ret
