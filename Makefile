@@ -1,4 +1,4 @@
-ASSEMBLER=mono ~/Desktop/Calculators/Brass.exe
+AS=mono ~/Desktop/Calculators/Brass.exe
 
 all:
-	$(ASSEMBLER) main.asm DotStar.8xp -l DotStar.html
+	$(AS) main.asm DotStar.8xp -l DotStar.html
