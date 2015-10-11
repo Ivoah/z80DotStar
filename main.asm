@@ -4,65 +4,75 @@
 .define NUM_LEDS 5
 .define led(num, red, green, blue) ld b, num \ ld c, red \ ld d, green \ ld e, blue \ call dotstar.set_led
 
-.define CSE
-
-.ifdef CSE
-.include "ti84pcse.inc"
-.else
+.nolist
 .include "ti83plus.inc"
-.endif
+.include "dcs7.inc"
+.list
 
 .org userMem - 2
-.ifdef CSE
-.db tExtTok, tAsm84CCmp
-.else
 .db $BB,$6D
-.endif
 
 start:
     call dotstar.init
-    ld a, $FF
-    out (1), a
-    ld a, $FD
-    out (1), a
+    OpenGUIStack()
+    PushGUIStacks(GUIStack)
+    GUIMouse(0)
 
-    led(0, $FF, $00, $00)
-    led(1, $FF, $FF, $FF)
-    led(2, $00, $00, $FF)
-    led(3, $FF, $00, $00)
-    led(4, $FF, $FF, $FF)
-    call dotstar.show
-loop:
-    ld hl, 1800
-    call pause
-    call dotstar.shift
-    led(0, $00, $00, $FF)
-    call dotstar.show
-    ld hl, 1800
-    call pause
-    call dotstar.shift
-    led(0, $FF, $FF, $FF)
-    call dotstar.show
-    ld hl, 1800
-    call pause
-    call dotstar.shift
-    led(0, $FF, $00, $00)
-    call dotstar.show
-    in a, (1) ;loop code
-    bit 6, a
-    jr nz, loop
+show_leds:
+    MouseRecover()
+    GUIFindFirst()
+    push hl \ push de
+        led(0, (hl), (hl), (hl))
+        dotstar.show_leds
+    pop de \ hl
+    GUIMouse(0)
+
+quit:
+    MouseRecover()
+    CloseGUIStack()
     call dotstar.clear
     call dotstar.show
     call dotstar.free
     ret
 
-pause:
-    djnz pause
-    dec hl
-    ld a, h
-    or l
-    jr nz, pause
-    ret
+should_quit:
+    .db 0
+
+GUIStack:
+    .dw {@} - GUIStack
+    .db GUIRSmallWin
+    .db 5, 5
+    .db $70,$88,$88,$88,$70
+    .db "Adafruit DotStar",0
+@:
+    .dw {@} - {@-1}
+    .db GUIRWordInt
+    .db 1, 1
+    .db 127, 0, 255
+@:
+    .dw {@} - {@-1}
+    .db GUIRWordInt
+    .db 1, 9
+    .db 127, 0, 255
+@:
+    .dw {@} - {@-1}
+    .db GUIRWordInt
+    .db 1, 17
+    .db 127, 0, 255
+@:
+    .dw {@} - {@-1}
+    .db GUIRButtonText
+    .db 1, 25
+    .dw show_leds
+    .db "Show", 0
+@:
+    .dw {@} - {@-1}
+    .db GUIRButtonText
+    .db 25, 25
+    .dw quit
+    .db "Quit", 0
+@:
+    .db $FF, $FF
 
 .include "DotStar.asm"
 
